@@ -122,14 +122,14 @@ void loop(){
 
   if (time - lastTempReadTime >= TEMPERATURE_READ_INTERVAL) {
     if (hours < 4) {
-        // Control temperature for the first four hours (35-39°C)
+        // Control temperature for the first four hours (38-43°C)
         if (temp < 37) {
             digitalWrite(RELAY_PIN1, HIGH);           
         } else if (temp > 42) {
             digitalWrite(RELAY_PIN1, LOW);      
         }
     } else {
-        // Control temperature for the remaining time (53-58°C)
+        // Control temperature for the remaining time (54-59°C)
         if (temp < 53) {
             digitalWrite(RELAY_PIN1, HIGH);           
         } else if (temp > 58) {
@@ -334,7 +334,7 @@ void sendMessage(double weight) {
   String message = "Drying is done, Final Weight: " + String(weight);
   myGSM.println("AT+CMGF=1");
   delay(1000);
-  myGSM.println("AT+CMGS=\"09913358458\"\r");
+  myGSM.println("AT+CMGS=\"09123456789\"\r");
   delay(1000);
   // Send the message
   myGSM.println(message);
@@ -346,7 +346,7 @@ void sendMessage(double weight) {
 void sendFirst(){
   myGSM.println("AT+CMGF=1");
   delay(1000);
-  myGSM.println("AT+CMGS=\"+639913358458\"\r");
+  myGSM.println("AT+CMGS=\"+639123456789\"\r");
   delay(1000);
   myGSM.println("The drying will begin");
   delay(1000);
