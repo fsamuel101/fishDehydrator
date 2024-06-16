@@ -97,6 +97,10 @@ void loop(){
   float fractionOfHour = (time % 60000UL) / 3600000.0;
   float temp = dht.readTemperature();
   float humidity = dht.readHumidity();
+  while(true){
+    lcd.clear();
+    lcd.print("please wait");
+  }
 
   digitalWrite(RELAY_PIN2, HIGH);
   
